@@ -23,3 +23,15 @@ UINT8_T AD5593Task_IIC_CheckDevice( void )
 {
 	return AD5593Lib_IIC_CheckDevice();
 }
+
+///////////////////////////////////////////////////////////////////////////////
+//////函	   数： 
+//////功	   能： 
+//////输入参数: 
+//////输出参数: 
+//////说	   明： 
+//////////////////////////////////////////////////////////////////////////////
+UINT8_T AD5593Task_IIC_DACRead( UINT8_T channel, UINT8_T *pVal )
+{
+	return AD5593Lib_IIC_DACRead( channel, pVal );
+}

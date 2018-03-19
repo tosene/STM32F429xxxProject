@@ -10,6 +10,7 @@ extern "C"
 	//===º¯Êý¶¨Òå
 	UINT8_T AD5593Lib_IIC_Init( void );
 	UINT8_T AD5593Lib_IIC_CheckDevice( void );
+	UINT8_T AD5593Lib_IIC_DACRead( UINT8_T channel, UINT8_T *pVal );
 	//////////////////////////////////////////////////////////////////////////////////////
 	#ifdef __cplusplus
 }

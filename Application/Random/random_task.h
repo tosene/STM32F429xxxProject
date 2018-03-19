@@ -6,7 +6,7 @@ extern "C" {
 #endif 
 
 	///------------使用包含的头文件
-#include "random_lib.h"
+	#include "random_lib.h"
 	///////////////////////////////////////////////////////////////////////////////
 	void RandomTask_Init(void);
 	void RandomTask_DeInit(void);

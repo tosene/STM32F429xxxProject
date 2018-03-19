@@ -10,6 +10,7 @@ extern "C"
 	//////////////////////////////////////////////////////////////////////////////
 	#include "complier_lib.h"
 	#include "delay_task.h"
+	#include "gpio_task.h"
 	
 	//---传输的消息
 	#define I2C_HandlerType_MSG_SoftInit			0

@@ -36,6 +36,7 @@ WM8510_HandlerType g_WM8510HandlerType =
 	.pI2CWM8510=NULL,
 };
 
+//---指针变量
 pWM8510_HandlerType pWM8510HandlerType = &g_WM8510HandlerType;
 //===统一发送函数---用于兼容软硬件的模拟
 UINT8_T( *WM8510_SEND_CMD )( UINT8_T * ) = NULL;
@@ -51,7 +52,8 @@ UINT8_T WM8510_IIC_Init( void )
 {
 	pWM8510HandlerType->pI2CWM8510 = &pWM8510HandlerType->I2CWM8510;
 	//---初始化的时候必须有有这一项
-	I2CTask_HandlerType_Master_Init( pWM8510HandlerType->pI2CWM8510,0 );
+	//I2CTask_HandlerType_Master_Init( pWM8510HandlerType->pI2CWM8510,0 );
+	I2CTask_HandlerType_Master_Init( I2C_WM8510HandlerType, 0 );
 	//---指向发送函数
 	WM8510_SEND_CMD = WM8510_IIC_SW_SendCmd;
 	//---发送配置命令
@@ -72,9 +74,11 @@ UINT8_T WM8510_IIC_Init( void )
 //////////////////////////////////////////////////////////////////////////////
 UINT8_T WM8510_IIC_SW_SendData( UINT8_T *pRegistValue, UINT8_T length )
 {
-	pWM8510HandlerType->pI2CWM8510->I2CDataPoint = pRegistValue;
+	//pWM8510HandlerType->pI2CWM8510->I2CDataPoint = pRegistValue;
 	//return I2CLib_HandlerType_Master_SoftSendData( pWM8510HandlerType->pI2CWM8510, length );
-	return pWM8510HandlerType->pI2CWM8510->I2C_MSG_Task( pWM8510HandlerType->pI2CWM8510, length, I2C_HandlerType_MSG_SofSendData );
+	//return pWM8510HandlerType->pI2CWM8510->I2C_MSG_Task( pWM8510HandlerType->pI2CWM8510, length, I2C_HandlerType_MSG_SofSendData );
+	I2C_WM8510HandlerType->I2CDataPoint = pRegistValue;
+	return I2C_WM8510HandlerType->I2C_MSG_Task( I2C_WM8510HandlerType, length, I2C_HandlerType_MSG_SofSendData );
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -131,6 +131,8 @@ void Sys_Init( void )
 	//SEI();
 	AD5593Task_IIC_CheckDevice();
 	//WM8510Task_SetFreqMHz( 12 );
+	UINT8_T dac[2] = { 0x00,0x00 };
+	AD5593Task_IIC_DACRead( 1, dac );
 }
 
 ///////////////////////////////////////////////////////////////////////////////

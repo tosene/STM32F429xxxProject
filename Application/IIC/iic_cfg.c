@@ -29,6 +29,10 @@ UINT8_T I2C_HandlerType_StructInit( I2C_HandlerType *I2CHandlerType )
 //////////////////////////////////////////////////////////////////////////////
 UINT8_T I2C_HandlerType_Master_SoftInit( I2C_HandlerType *I2CHandlerType )
 {
+	//---使能GPIO的时钟
+	GPIOTask_EnableClock( I2CHandlerType->I2CSCLGPIOx );
+	GPIOTask_EnableClock( I2CHandlerType->I2CSDAGPIOx );
+	//---GPIO的结构体
 	LL_GPIO_InitTypeDef GPIO_InitStruct;
 	//---GPIO的初始化
 	GPIO_InitStruct.Pin			= I2CHandlerType->I2CSCLPin;				//---对应的GPIO的引脚

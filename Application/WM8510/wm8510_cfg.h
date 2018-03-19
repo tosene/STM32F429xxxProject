@@ -10,7 +10,6 @@ extern "C"
 	//---SCL端口
 	#define	WM8510_SCL_PORT				GPIOB
 	#define WM8510_SCL_BIT				LL_GPIO_PIN_6
-  
 	//---SDA端口
 	#define WM8510_SDA_PORT				GPIOB
 	#define WM8510_SDA_BIT				LL_GPIO_PIN_7
@@ -249,6 +248,9 @@ extern "C"
 	#define R56L_BYP2MONO				0x02
 	#define R56L_DAC2MONO				0x01
 	
+	//---使用的通信方式
+	#define I2C_WM8510HandlerType		pWM8510HandlerType->pI2CWM8510
+
 	typedef struct _WM8510_HandlerType
 	{
 		UINT8_T		mclkDIV;			//---mclk的分频数
@@ -273,8 +275,8 @@ extern "C"
 		I2C_HandlerType I2CWM8510;
 		pI2C_HandlerType pI2CWM8510;
 	}WM8510_HandlerType, *pWM8510_HandlerType;
-    
-
+	extern  pWM8510_HandlerType pWM8510HandlerType;
+	
 	UINT8_T WM8510_IIC_Init( void );
 	UINT8_T WM8510_IIC_SW_SendData( UINT8_T *pRegistValue, UINT8_T length );
 	UINT8_T WM8510_IIC_SW_SendCmd( UINT8_T *pRegistValue );
