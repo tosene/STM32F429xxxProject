@@ -1,0 +1,17 @@
+#ifndef __IWDG_LIB_H
+#define __IWDG_LIB_H
+#ifdef __cplusplus
+extern "C"
+{
+	#endif
+	//////////////////////////////////////////////////////////////////////////////////////
+	#include "iwdg_cfg.h"
+
+	//===º¯Êý¶¨Òå
+	void IWDGLib_Init(void);
+	void IWDGLib_Reset(void);
+	//////////////////////////////////////////////////////////////////////////////////////
+	#ifdef __cplusplus
+}
+#endif
+#endif /*__IWDG_LIB_H */

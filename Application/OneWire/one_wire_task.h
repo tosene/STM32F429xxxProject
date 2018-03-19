@@ -1,0 +1,18 @@
+#ifndef __ONE_WIRE_TASK_H
+#define __ONE_WIRE_TASK_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif 
+
+	///------------使用包含的头文件
+	#include "one_wire_lib.h"
+	///////////////////////////////////////////////////////////////////////////////
+
+	///////////////////////////////////////////////////////////////////////////////
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __ONE_WIRE_TASK_H */

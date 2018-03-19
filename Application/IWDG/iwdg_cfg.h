@@ -1,0 +1,18 @@
+#ifndef __IWDG_CFG_H
+#define __IWDG_CFG_H
+#ifdef __cplusplus
+extern "C"
+{
+	#endif
+	//////////////////////////////////////////////////////////////////////////////////////
+	#include "complier_lib.h"
+
+	//===º¯Êý¶¨Òå
+	void IWDG_Init(void);
+	void IWDG_DeInit(void);
+	void IWDG_Reset(void);
+	//////////////////////////////////////////////////////////////////////////////////////
+#ifdef __cplusplus
+}
+#endif
+#endif /*__IWDG_CFG_H */
