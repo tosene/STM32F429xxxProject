@@ -122,25 +122,12 @@ void Sys_Init( void )
 	//---随机数序列发生器
 	RandomTask_Init();
 	//---WM8510的初始化
-    WM8510Lib_Init();
-	//---设置WM8510的初始化值
-	WM8510Lib_SetFreqMHz( 12 );
-	//---GPIO的结构体
-	LL_GPIO_InitTypeDef GPIO_InitStruct;
-	//---端口号
-	GPIO_InitStruct.Pin = LL_GPIO_PIN_8 | LL_GPIO_PIN_9;
-	//---模式配置
-	GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
-	//---工作速度
-	GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-	//---复用功能的推完输出
-	GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-	//---输入上拉使能
-	GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
-	//---复用功能为USART1
-	GPIO_InitStruct.Alternate = LL_GPIO_AF_0;
-	LL_GPIO_Init( GPIOC, &GPIO_InitStruct );
-
+    WM8510Task_Init();
+	//---AD5593的初始化
+	AD5593Task_IIC_Init();
+	//---使能去全局中断
+	SEI();
+	AD5593Task_IIC_CheckDevice();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -157,15 +144,15 @@ int main(void)
 	UINT32_T  i=0;
 	while ( 1 )
 	{
-        //WM8510_IIC_SetFreqMHz( 13 );
-		Delay_ms( 10 );
-		//USARTTask_HandlerType_FuncType(pUSART1, NULL);
-		temp = RandomTask_GetData();
-		USART_HandlerType_Printf(pUSART1,"Rang=%llu\r\n", temp);
-		Delay_ms(10);
-		i++;
-		USART_HandlerType_Printf(pUSART1,"打印输出次数:%llu\r\n", i);
-		Delay_ms(10);
+		////WM8510_IIC_SetFreqMHz( 13 );
+		//Delay_ms( 10 );
+		////USARTTask_HandlerType_FuncType(pUSART1, NULL);
+		//temp = RandomTask_GetData();
+		//USART_HandlerType_Printf(pUSART1,"Rang=%llu\r\n", temp);
+		//Delay_ms(10);
+		//i++;
+		//USART_HandlerType_Printf(pUSART1,"打印输出次数:%llu\r\n", i);
+		//Delay_ms(10);
         
 		//WM8510Lib_IIC_Debug();
 	}

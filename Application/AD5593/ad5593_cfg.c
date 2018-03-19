@@ -113,7 +113,7 @@ UINT8_T AD5593_IIC_ResetDevice( void )
 //////输出参数: 
 //////说	   明： 
 //////////////////////////////////////////////////////////////////////////////
-UINT8_T AD55593_IIC_CheckDevice( void )
+UINT8_T AD5593_IIC_CheckDevice( void )
 {
 	UINT8_T temp[3] = { AD5593_REG_READBACK| AD5593_REG_PULL_DOWN_CONF,0x00,0x00 };
 	UINT8_T _return = 0;
@@ -136,7 +136,7 @@ UINT8_T AD55593_IIC_CheckDevice( void )
 //////输出参数: 
 //////说	   明： 
 //////////////////////////////////////////////////////////////////////////////
-UINT8_T AD55593_IIC_DACWrite( UINT8_T channel, UINT16_T val )
+UINT8_T AD5593_IIC_DACWrite( UINT8_T channel, UINT16_T val )
 {
 	UINT8_T temp[3] = { AD5593_DAC_WRITE | channel,0x00,0x00 };
 	UINT32_T powerVal = val;
@@ -154,7 +154,7 @@ UINT8_T AD55593_IIC_DACWrite( UINT8_T channel, UINT16_T val )
 //////输出参数: 
 //////说	   明： 
 //////////////////////////////////////////////////////////////////////////////
-UINT8_T AD55593_IIC_DACRead( UINT8_T channel, UINT8_T *pVal )
+UINT8_T AD5593_IIC_DACRead( UINT8_T channel, UINT8_T *pVal )
 {
 	UINT8_T temp[3] = { AD5593_DAC_READBACK | channel,0x00,0x00 };
 	AD55593_READ_CMD( temp );
@@ -170,7 +170,7 @@ UINT8_T AD55593_IIC_DACRead( UINT8_T channel, UINT8_T *pVal )
 //////输出参数: 
 //////说	   明： 
 //////////////////////////////////////////////////////////////////////////////
-UINT8_T AD55593_IIC_ADCRead( UINT8_T channel, UINT16_T val )
+UINT8_T AD5593_IIC_ADCRead( UINT8_T channel, UINT16_T val )
 {
   return 0;
 }

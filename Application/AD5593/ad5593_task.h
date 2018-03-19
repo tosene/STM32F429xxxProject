@@ -8,7 +8,8 @@ extern "C"
 	#include "ad5593_lib.h"
 
 	//===º¯Êý¶¨Òå
-
+	UINT8_T AD5593Task_IIC_Init( void );
+	UINT8_T AD5593Task_IIC_CheckDevice( void );
 	//////////////////////////////////////////////////////////////////////////////////////
 	#ifdef __cplusplus
 }

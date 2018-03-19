@@ -11,7 +11,8 @@ extern "C" {
 	#include "systick_task.h"
 	#include "usart_task.h"
 	#include "random_task.h"
-	#include "wm8510_lib.h"
+	#include "wm8510_task.h"
+	#include "ad5593_task.h"
 	///////////////////////////////////////////////////////////////////////////////
 	void SystemClock_Config( void );
 	void SysNVIC_Init( void );

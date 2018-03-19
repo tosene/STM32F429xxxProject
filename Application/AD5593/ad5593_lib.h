@@ -8,7 +8,8 @@ extern "C"
 	#include "ad5593_cfg.h"
 
 	//===º¯Êý¶¨Òå
-
+	UINT8_T AD5593Lib_IIC_Init( void );
+	UINT8_T AD5593Lib_IIC_CheckDevice( void );
 	//////////////////////////////////////////////////////////////////////////////////////
 	#ifdef __cplusplus
 }
