@@ -62,6 +62,7 @@ UINT8_T I2C_HandlerType_Master_SoftDeInit( I2C_HandlerType *I2CHandlerType )
 	//---SCL和SDA端口输出高电平
 	I2C_SCL_OUT_1( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
 	I2C_SDA_OUT_1( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin );
+	I2CHandlerType->I2C_MSG_Task = NULL;
 	return 0;
 }
 
@@ -78,13 +79,13 @@ UINT8_T I2C_HandlerType_Master_SoftStart( I2C_HandlerType *I2CHandlerType )
 	//---发送起始条件的数据信号
 	I2C_SDA_OUT_1( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin );
 	I2C_SCL_OUT_1( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	//---发送起始信号;
 	I2C_SDA_OUT_0( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	//---钳住I2C总线，准备发送或接收数据
-	I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	//I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
+	//DelayTask_us( I2CHandlerType->nowPluseWidth );
 	return 0;
 }
 
@@ -100,10 +101,10 @@ UINT8_T I2C_HandlerType_Master_SoftStop( I2C_HandlerType *I2CHandlerType )
 	I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
 	//---发送起始条件的数据信号
 	I2C_SDA_OUT_0( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	I2C_SCL_OUT_1( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
 	I2C_SDA_OUT_1( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	return 0;
 }
 
@@ -119,7 +120,7 @@ UINT8_T I2C_HandlerType_Master_SoftReadAck( I2C_HandlerType *I2CHandlerType )
 	UINT8_T is_ACk = 0;
 	UINT8_T i = 0;
 	I2C_SCL_OUT_1( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	//---在指定的时间内读取应答信号
 	for( i = 255; i > 0; i-- )
 	{
@@ -131,7 +132,7 @@ UINT8_T I2C_HandlerType_Master_SoftReadAck( I2C_HandlerType *I2CHandlerType )
 		}
 	}
 	I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	return is_ACk;
 }
 
@@ -161,6 +162,7 @@ UINT8_T I2C_HandlerType_Master_SoftWaitAck( I2C_HandlerType *I2CHandlerType )
 		}
 	}
 	I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	return 0;
 }
 
@@ -175,10 +177,11 @@ UINT8_T I2C_HandlerType_Master_SoftNotAck( I2C_HandlerType *I2CHandlerType )
 {
 	I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
 	I2C_SDA_OUT_1( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	I2C_SCL_OUT_1( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	return 0;
 }
 
@@ -193,10 +196,11 @@ UINT8_T I2C_HandlerType_Master_SoftAck( I2C_HandlerType *I2CHandlerType )
 {
 	I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
 	I2C_SDA_OUT_0( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	I2C_SCL_OUT_1( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
-	Delay_us( I2CHandlerType->nowPluseWidth );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
 	return 0;
 }
 
@@ -227,6 +231,31 @@ UINT8_T I2C_HandlerType_Master_SoftSendAck( I2C_HandlerType *I2CHandlerType, UIN
 //////输出参数: 
 //////说	   明： 
 //////////////////////////////////////////////////////////////////////////////
+UINT8_T I2C_HandlerType_Master_SoftSendBit( I2C_HandlerType *I2CHandlerType, UINT8_T val )
+{
+	if( ( val & 0x01 ) != 0x00 )
+	{
+		I2C_SDA_OUT_1( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin );
+	}
+	else
+	{
+		I2C_SDA_OUT_0( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin );
+	}
+	val <<= 1;
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
+	I2C_SCL_OUT_1( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
+	I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
+
+	return 0;
+}
+///////////////////////////////////////////////////////////////////////////////
+//////函	   数： 
+//////功	   能： 
+//////输入参数: 
+//////输出参数: 
+//////说	   明： 
+//////////////////////////////////////////////////////////////////////////////
 UINT8_T I2C_HandlerType_Master_SoftSendByte( I2C_HandlerType *I2CHandlerType, UINT8_T val )
 {
 	UINT8_T i = 0;
@@ -242,14 +271,35 @@ UINT8_T I2C_HandlerType_Master_SoftSendByte( I2C_HandlerType *I2CHandlerType, UI
 			I2C_SDA_OUT_0( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin );
 		}
 		val <<= 1;
-		Delay_us( I2CHandlerType->nowPluseWidth );
+		DelayTask_us( I2CHandlerType->nowPluseWidth );
 		I2C_SCL_OUT_1( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
-		Delay_us( I2CHandlerType->nowPluseWidth );
+		DelayTask_us( I2CHandlerType->nowPluseWidth );
 		I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
 	}
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
     return 0;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+//////函	   数： 
+//////功	   能： 
+//////输入参数: 
+//////输出参数: 
+//////说	   明： 
+//////////////////////////////////////////////////////////////////////////////
+UINT8_T I2C_HandlerType_Master_SoftReadBit( I2C_HandlerType *I2CHandlerType )
+{
+	UINT8_T _return = 0;
+	I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
+	I2C_SCL_OUT_1( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
+	DelayTask_us( I2CHandlerType->nowPluseWidth );
+	if( I2C_SDA_STATE( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin ) != 0x00 )
+	{
+		_return= 1;
+	}
+	return _return;
+}
 ///////////////////////////////////////////////////////////////////////////////
 //////函	   数： 
 //////功	   能： 
@@ -264,10 +314,10 @@ UINT8_T I2C_HandlerType_Master_SoftReadByte( I2C_HandlerType *I2CHandlerType )
 	for (i=0;i<8;i++)
 	{
 		I2C_SCL_OUT_0( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
-		Delay_us( I2CHandlerType->nowPluseWidth );
+		DelayTask_us( I2CHandlerType->nowPluseWidth );
 		_return <<= 1;
 		I2C_SCL_OUT_1( I2CHandlerType->I2CSCLGPIOx, I2CHandlerType->I2CSCLPin );
-		Delay_us( I2CHandlerType->nowPluseWidth );
+		DelayTask_us( I2CHandlerType->nowPluseWidth );
 		if ( I2C_SDA_STATE( I2CHandlerType->I2CSDAGPIOx, I2CHandlerType->I2CSDAPin ) !=0x00)
 		{
 			_return += 1;
@@ -287,7 +337,7 @@ UINT8_T I2C_HandlerType_Master_SoftSendData( I2C_HandlerType *I2CHandlerType, UI
 {
 	UINT8_T i = 0;
 	UINT8_T _return = 0;
-	//---发送启动型号
+	//---发送启动信号
 	I2C_HandlerType_Master_SoftStart( I2CHandlerType );
 	//---发送从机地址
 	I2C_HandlerType_Master_SoftSendByte( I2CHandlerType, I2CHandlerType->I2CDeviceAddr & 0xFE );
@@ -328,7 +378,7 @@ UINT8_T I2C_HandlerType_Master_SoftReadData( I2C_HandlerType *I2CHandlerType, UI
 {
 	UINT8_T _return = 0;
 	UINT16_T i = 0;
-	//---发送启动型号
+	//---发送启动信号
 	I2C_HandlerType_Master_SoftStart( I2CHandlerType );
 	//---发送从机地址
 	I2C_HandlerType_Master_SoftSendByte( I2CHandlerType, (I2CHandlerType->I2CDeviceAddr|0x01) );

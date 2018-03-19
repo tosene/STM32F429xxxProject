@@ -21,5 +21,5 @@ UINT8_T AD5593Lib_IIC_Init( void )
 //////////////////////////////////////////////////////////////////////////////
 UINT8_T AD5593Lib_IIC_CheckDevice( void )
 {
-	return AD55593_IIC_CheckDevice();
+	return AD5593_IIC_CheckDevice();
 }

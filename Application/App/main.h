@@ -13,6 +13,7 @@ extern "C" {
 	#include "random_task.h"
 	#include "wm8510_task.h"
 	#include "ad5593_task.h"
+	#include "led_task.h"
 	///////////////////////////////////////////////////////////////////////////////
 	void SystemClock_Config( void );
 	void SysNVIC_Init( void );

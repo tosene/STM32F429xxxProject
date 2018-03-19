@@ -121,13 +121,16 @@ void Sys_Init( void )
 	USARTTask_HandlerType_Init( USART1_HandlerType,64);
 	//---随机数序列发生器
 	RandomTask_Init();
-	//---WM8510的初始化
-    WM8510Task_Init();
-	//---AD5593的初始化
+    //---AD5593的初始化
 	AD5593Task_IIC_Init();
+	//---WM8510的初始化
+   // WM8510Task_Init();
+	//---LED显示端口的设置
+	LEDTask_Init();
 	//---使能去全局中断
-	SEI();
+	//SEI();
 	AD5593Task_IIC_CheckDevice();
+	//WM8510Task_SetFreqMHz( 12 );
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -140,8 +143,8 @@ void Sys_Init( void )
 int main(void)
 {
 	Sys_Init( );
-	UINT32_T temp = 0;
-	UINT32_T  i=0;
+	//UINT32_T temp = 0;
+	//UINT32_T  i=0;
 	while ( 1 )
 	{
 		////WM8510_IIC_SetFreqMHz( 13 );

@@ -9,7 +9,7 @@ extern "C"
 	//////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////
 	#include "complier_lib.h"
-	#include "delay_lib.h"
+	#include "delay_task.h"
 	
 	//---传输的消息
 	#define I2C_HandlerType_MSG_SoftInit			0
@@ -19,17 +19,17 @@ extern "C"
 
 	//===消息体模式
 	//---SDA端口
-	#define I2C_SDA_OUT_0(name,index)	LL_GPIO_ResetOutputPin(	name,index )
-	#define I2C_SDA_OUT_1(name,index)	LL_GPIO_SetOutputPin(	name,index )
-	#define I2C_SDA_STATE(name,index)	LL_GPIO_IsInputPinSet(	name,index )
+	#define I2C_SDA_OUT_0(name,index)				LL_GPIO_ResetOutputPin(	name,index )
+	#define I2C_SDA_OUT_1(name,index)				LL_GPIO_SetOutputPin(	name,index )
+	#define I2C_SDA_STATE(name,index)				LL_GPIO_IsInputPinSet(	name,index )
 	//---SCL端口
-	#define I2C_SCL_OUT_0(name,index)	LL_GPIO_ResetOutputPin(	name,index )
-	#define I2C_SCL_OUT_1(name,index)	LL_GPIO_SetOutputPin(	name,index )
-	#define I2C_SCL_STATE(name,index)	LL_GPIO_IsInputPinSet(	name,index )
+	#define I2C_SCL_OUT_0(name,index)				LL_GPIO_ResetOutputPin(	name,index )
+	#define I2C_SCL_OUT_1(name,index)				LL_GPIO_SetOutputPin(	name,index )
+	#define I2C_SCL_STATE(name,index)				LL_GPIO_IsInputPinSet(	name,index )
 
 	//---结构体定义
-	typedef struct _I2C_HandlerType		I2C_HandlerType;
-	typedef	struct _I2C_HandlerType		*pI2C_HandlerType;
+	typedef struct _I2C_HandlerType					I2C_HandlerType;
+	typedef	struct _I2C_HandlerType					*pI2C_HandlerType;
 	//---消息体定义
 	typedef UINT8_T( *I2C_MSG_HandlerType )( I2C_HandlerType *I2CHandlerType, UINT8_T val, UINT8_T msg );
 	//---消息体的I2C

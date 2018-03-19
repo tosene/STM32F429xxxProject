@@ -288,7 +288,7 @@
                 <option>
                     <name>CCAllowList</name>
                     <version>1</version>
-                    <state>11111110</state>
+                    <state>00000000</state>
                 </option>
                 <option>
                     <name>CCDebugInfo</name>
@@ -377,6 +377,7 @@
                     <state>$PROJ_DIR$\..\Application\IWDG</state>
                     <state>$PROJ_DIR$\..\Application\WWDG</state>
                     <state>$PROJ_DIR$\..\Application\SPI</state>
+                    <state>$PROJ_DIR$\..\Application\LED</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -392,7 +393,7 @@
                 </option>
                 <option>
                     <name>CCOptLevel</name>
-                    <state>3</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CCOptStrategy</name>
@@ -401,7 +402,7 @@
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>3</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CompilerMisraRules98</name>
@@ -1128,10 +1129,22 @@
         <group>
             <name>Delay</name>
             <file>
+                <name>$PROJ_DIR$\..\Application\Delay\delay_cfg.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Application\Delay\delay_cfg.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Application\Delay\delay_lib.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Application\Delay\delay_lib.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Application\Delay\delay_task.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Application\Delay\delay_task.h</name>
             </file>
         </group>
         <group>

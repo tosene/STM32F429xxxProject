@@ -1,4 +1,5 @@
 #include "systick_cfg.h"
+#include "led_cfg.h"
 //---定时器全局变量
 SysTick_HandlerType g_SysTick =
 {
@@ -113,6 +114,7 @@ void SysTickCfg_IncInit(void)
 	if( ( ( pSysTick->usXBaseCount % SYSTICK_BASE_TIME_S/*10000*/ ) == 0 ) && ( pSysTick->usXBaseCount != 0 ) )
 	{
 		pSysTick->sX1Count++;
+		LED_Work_Change();
 	}
 }
 

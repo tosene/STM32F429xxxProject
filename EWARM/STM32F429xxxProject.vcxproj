@@ -39,7 +39,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>STM32F429xx;USE_FULL_LL_DRIVER;ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING;__IASMARM__;__FPU_PRESENT;__FPU_USED;_IAR_;__ICCARM__;_Pragma(x)=;__interrupt=;__packed=;__weak=;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Drivers\STM32F4xx_HAL_Driver\Inc;..\Drivers\STM32F4xx_HAL_Driver\Src;..\Drivers\CMSIS\Include;..\STM32F4xx;..\STARTUP\EWARM;..\Complier;..\Doc;..\Application\App;..\Application\Delay;..\Application\SysTick;..\Application\USART;..\Application\GPIO;..\Application\Random;..\Application\IIC;..\Application\OneWire;..\Application\WM8510;..\Application\AD5593;..\Application\AT24Cxx;..\Application\Debug;..\Application\HVPP;..\Application\HVSP;..\Application\NVSP;..\Application\IWDG;..\Application\WWDG;..\Application\SPI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Drivers\STM32F4xx_HAL_Driver\Inc;..\Drivers\STM32F4xx_HAL_Driver\Src;..\Drivers\CMSIS\Include;..\STM32F4xx;..\STARTUP\EWARM;..\Complier;..\Doc;..\Application\App;..\Application\Delay;..\Application\SysTick;..\Application\USART;..\Application\GPIO;..\Application\Random;..\Application\IIC;..\Application\OneWire;..\Application\WM8510;..\Application\AD5593;..\Application\AT24Cxx;..\Application\Debug;..\Application\HVPP;..\Application\HVSP;..\Application\NVSP;..\Application\IWDG;..\Application\WWDG;..\Application\SPI;..\Application\LED;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
@@ -60,7 +60,9 @@
     <ClInclude Include="..\Application\Debug\debug_cfg.h" />
     <ClInclude Include="..\Application\Debug\debug_lib.h" />
     <ClInclude Include="..\Application\Debug\debug_task.h" />
+    <ClInclude Include="..\Application\Delay\delay_cfg.h" />
     <ClInclude Include="..\Application\Delay\delay_lib.h" />
+    <ClInclude Include="..\Application\Delay\delay_task.h" />
     <ClInclude Include="..\Application\GPIO\gpio_cfg.h" />
     <ClInclude Include="..\Application\GPIO\gpio_lib.h" />
     <ClInclude Include="..\Application\GPIO\gpio_task.h" />
@@ -145,7 +147,9 @@
     <ClCompile Include="..\Application\Debug\debug_cfg.c" />
     <ClCompile Include="..\Application\Debug\debug_lib.c" />
     <ClCompile Include="..\Application\Debug\debug_task.c" />
+    <ClCompile Include="..\Application\Delay\delay_cfg.c" />
     <ClCompile Include="..\Application\Delay\delay_lib.c" />
+    <ClCompile Include="..\Application\Delay\delay_task.c" />
     <ClCompile Include="..\Application\GPIO\gpio_cfg.c" />
     <ClCompile Include="..\Application\GPIO\gpio_lib.c" />
     <ClCompile Include="..\Application\GPIO\gpio_task.c" />

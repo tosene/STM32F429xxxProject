@@ -117,7 +117,13 @@
     <ClInclude Include="..\Application\Debug\debug_task.h">
       <Filter>Application\Debug</Filter>
     </ClInclude>
+    <ClInclude Include="..\Application\Delay\delay_cfg.h">
+      <Filter>Application\Delay</Filter>
+    </ClInclude>
     <ClInclude Include="..\Application\Delay\delay_lib.h">
+      <Filter>Application\Delay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Application\Delay\delay_task.h">
       <Filter>Application\Delay</Filter>
     </ClInclude>
     <ClInclude Include="..\Application\GPIO\gpio_cfg.h">
@@ -368,7 +374,13 @@
     <ClCompile Include="..\Application\Debug\debug_task.c">
       <Filter>Application\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="..\Application\Delay\delay_cfg.c">
+      <Filter>Application\Delay</Filter>
+    </ClCompile>
     <ClCompile Include="..\Application\Delay\delay_lib.c">
+      <Filter>Application\Delay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Application\Delay\delay_task.c">
       <Filter>Application\Delay</Filter>
     </ClCompile>
     <ClCompile Include="..\Application\GPIO\gpio_cfg.c">

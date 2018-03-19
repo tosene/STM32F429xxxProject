@@ -1262,10 +1262,22 @@
         <group>
             <name>Delay</name>
             <file>
+                <name>$PROJ_DIR$\..\Application\Delay\delay_cfg.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Application\Delay\delay_cfg.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Application\Delay\delay_lib.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Application\Delay\delay_lib.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Application\Delay\delay_task.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Application\Delay\delay_task.h</name>
             </file>
         </group>
         <group>

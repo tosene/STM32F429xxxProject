@@ -82,6 +82,7 @@ extern "C"
 	UINT8_T AD5593_IIC_SW_SendCmd( UINT8_T *pVal );
 	UINT8_T AD5593_IIC_SW_ReadCmd( UINT8_T *pVal );
 	UINT8_T AD5593_IIC_ResetDevice( void );
+	UINT8_T AD5593_IIC_CheckDevice( void );
 	//////////////////////////////////////////////////////////////////////////////////////
 	#ifdef __cplusplus
 }
